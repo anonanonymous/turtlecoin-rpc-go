@@ -23,6 +23,8 @@ func (daemon *TurtleCoind) makeGetRequest(method string) *bytes.Buffer {
 		fmt.Println(err)
 		return nil
 	}
+	req.Close = true
+
 	return decodeResponse(req)
 }
 
@@ -45,6 +47,7 @@ func (daemon *TurtleCoind) makePostRequest(method string, params interface{}) *b
 		fmt.Println(err1)
 		return nil
 	}
+	req.Close = true
 
 	return decodeResponse(req)
 }
@@ -70,6 +73,7 @@ func (wallet *Walletd) makePostRequest(method string, params interface{}) *bytes
 		fmt.Println(err1)
 		return nil
 	}
+	req.Close = true
 
 	return decodeResponse(req)
 }
